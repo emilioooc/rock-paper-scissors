@@ -4,8 +4,9 @@ function getComputerChoice(){
     return getChoice(number)
 };
 
+let computerChoice = null;
 function getChoice (number){
-    let computerChoice = null;
+
     if (number ==1){
         computerChoice = "tijera"
         return computerChoice;
@@ -20,9 +21,9 @@ function getChoice (number){
 
 
 let option = prompt ('1-Tijera \n 2-Papel \n 3-Piedra');
+let humanChoice = null;
 
 function getHumanChoice(option){
-    let humanChoice = null;
     if (option == 1){
         humanChoice = "tijera";
         return humanChoice;
@@ -35,5 +36,33 @@ function getHumanChoice(option){
     }
 };
 
-console.log(getHumanChoice(option));
-console.log(getComputerChoice());
+let humanScore = 0;
+let computerScore = 0;
+
+function playRound(){
+    getHumanChoice(option);
+    getComputerChoice();
+    if (humanChoice == "tijera" && computerChoice == "papel"){
+        humanScore = humanScore + 1;
+        return humanScore;
+    } else if (humanChoice == "tijera" && computerChoice == "piedra"){
+        computerScore = computerScore + 1;
+        return computerScore;
+    } else if (humanChoice == "papel" && computerChoice == "tijera"){
+        computerScore = computerScore + 1;
+        return computerScore;
+    } else if (humanChoice == "papel" && computerChoice == "piedra"){
+        humanScore = humanScore + 1;
+        return humanScore;
+    } else if (humanChoice == "piedra" && computerChoice == "papel"){
+        computerScore = computerScore + 1;
+        return computerScore;
+    } else if (humanChoice == "piedra" && computerChoice == "tijera"){
+        humanScore = humanScore + 1;
+        return humanScore;
+    } else {
+        return "empate"
+    }
+};
+
+console.log (playRound())
